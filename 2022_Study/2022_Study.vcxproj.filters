@@ -13,5 +13,13 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="소스 파일\01. Sort">
+      <UniqueIdentifier>{ba25ac5d-90bc-4f17-a8b3-6e73c16d5896}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SelectionSort.cpp">
+      <Filter>소스 파일\01. Sort</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
