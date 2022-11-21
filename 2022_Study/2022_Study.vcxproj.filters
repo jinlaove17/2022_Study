@@ -13,34 +13,40 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="소스 파일\01. Sort">
-      <UniqueIdentifier>{ba25ac5d-90bc-4f17-a8b3-6e73c16d5896}</UniqueIdentifier>
+    <Filter Include="소스 파일\Sort">
+      <UniqueIdentifier>{7651412d-b039-4e4f-86ba-c9d3e36441d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Graph">
+      <UniqueIdentifier>{3484a830-4c5d-43ed-95de-d9bd34cec864}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SelectionSort.cpp">
-      <Filter>소스 파일\01. Sort</Filter>
+    <ClCompile Include="Sort\BubbleSort.cpp">
+      <Filter>소스 파일\Sort</Filter>
     </ClCompile>
-    <ClCompile Include="InsertionSort.cpp">
-      <Filter>소스 파일\01. Sort</Filter>
+    <ClCompile Include="Sort\HeapSort.cpp">
+      <Filter>소스 파일\Sort</Filter>
     </ClCompile>
-    <ClCompile Include="BubbleSort.cpp">
-      <Filter>소스 파일\01. Sort</Filter>
+    <ClCompile Include="Sort\InsertionSort.cpp">
+      <Filter>소스 파일\Sort</Filter>
     </ClCompile>
-    <ClCompile Include="ShellSort.cpp">
-      <Filter>소스 파일\01. Sort</Filter>
+    <ClCompile Include="Sort\MergeSort.cpp">
+      <Filter>소스 파일\Sort</Filter>
     </ClCompile>
-    <ClCompile Include="MergeSort.cpp">
-      <Filter>소스 파일\01. Sort</Filter>
+    <ClCompile Include="Sort\QuickSort.cpp">
+      <Filter>소스 파일\Sort</Filter>
     </ClCompile>
-    <ClCompile Include="QuickSort.cpp">
-      <Filter>소스 파일\01. Sort</Filter>
+    <ClCompile Include="Sort\RadixSort.cpp">
+      <Filter>소스 파일\Sort</Filter>
     </ClCompile>
-    <ClCompile Include="HeapSort.cpp">
-      <Filter>소스 파일\01. Sort</Filter>
+    <ClCompile Include="Sort\SelectionSort.cpp">
+      <Filter>소스 파일\Sort</Filter>
     </ClCompile>
-    <ClCompile Include="RadixSort.cpp">
-      <Filter>소스 파일\01. Sort</Filter>
+    <ClCompile Include="Sort\ShellSort.cpp">
+      <Filter>소스 파일\Sort</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph\DFS.cpp">
+      <Filter>소스 파일\Graph</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
