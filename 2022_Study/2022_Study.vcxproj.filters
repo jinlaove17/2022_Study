@@ -36,5 +36,8 @@
     <ClCompile Include="QuickSort.cpp">
       <Filter>소스 파일\01. Sort</Filter>
     </ClCompile>
+    <ClCompile Include="HeapSort.cpp">
+      <Filter>소스 파일\01. Sort</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
