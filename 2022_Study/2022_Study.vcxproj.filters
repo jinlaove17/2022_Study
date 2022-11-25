@@ -54,5 +54,8 @@
     <ClCompile Include="Kruskal.cpp">
       <Filter>소스 파일\Graph</Filter>
     </ClCompile>
+    <ClCompile Include="Prim.cpp">
+      <Filter>소스 파일\Graph</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
