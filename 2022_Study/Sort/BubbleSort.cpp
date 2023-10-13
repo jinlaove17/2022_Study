@@ -1,10 +1,27 @@
 #include <iostream>
 #include <vector>
+#include <functional>
 
 using namespace std;
 
+struct Less
+{
+	bool operator()(int a, int b)
+	{
+		return a < b;
+	}
+};
+
+struct Greater
+{
+	bool operator()(int a, int b)
+	{
+		return a > b;
+	}
+};
+
 void PrintArray(const string& tag, const vector<int>& v);
-void BubbleSort(vector<int>& v);
+void BubbleSort(vector<int>& v, function<bool(int, int)> callable = Less());
 
 int main()
 {
@@ -13,7 +30,7 @@ int main()
 	cout << "[버블 정렬]" << endl << endl;
 
 	PrintArray("▶ 정렬 전", v);
-	BubbleSort(v);
+	BubbleSort(v); // BubbleSort(v, Greater());
 	PrintArray("▶ 정렬 후", v);
 }
 
@@ -23,19 +40,21 @@ void PrintArray(const string& tag, const vector<int>& v)
 
 	for (int i = 0; i < v.size(); ++i)
 	{
-		cout << v[i] << " ";
+		cout << v[i] << ' ';
 	}
 
 	cout << endl << endl;
 }
 
-void BubbleSort(vector<int>& v)
+void BubbleSort(vector<int>& v, function<bool(int, int)> callable)
 {
-	for (int i = v.size() - 1; i > 0; --i)
+	int n = static_cast<int>(v.size());
+
+	for (int i = n - 1; i > 0; --i)
 	{
 		for (int j = 0; j < i; ++j)
 		{
-			if (v[j] > v[j + 1])
+			if (callable(v[j + 1], v[j]))
 			{
 				swap(v[j], v[j + 1]);
 			}
