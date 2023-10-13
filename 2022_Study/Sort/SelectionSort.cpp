@@ -1,10 +1,27 @@
 #include <iostream>
 #include <vector>
+#include <functional>
 
 using namespace std;
 
+struct Less
+{
+	bool operator()(int a, int b)
+	{
+		return a < b;
+	}
+};
+
+struct Greater
+{
+	bool operator()(int a, int b)
+	{
+		return a > b;
+	}
+};
+
 void PrintArray(const string& tag, const vector<int>& v);
-void SelectionSort(vector<int>& v);
+void SelectionSort(vector<int>& v, function<bool(int, int)> callable = Less());
 
 int main()
 {
@@ -13,7 +30,7 @@ int main()
 	cout << "[선택 정렬]" << endl << endl;
 
 	PrintArray("▶ 정렬 전", v);
-	SelectionSort(v);
+	SelectionSort(v); // SelectionSort(v, Greater());
 	PrintArray("▶ 정렬 후", v);
 }
 
@@ -23,26 +40,28 @@ void PrintArray(const string& tag, const vector<int>& v)
 
 	for (int i = 0; i < v.size(); ++i)
 	{
-		cout << v[i] << " ";
+		cout << v[i] << ' ';
 	}
 
 	cout << endl << endl;
 }
 
-void SelectionSort(vector<int>& v)
+void SelectionSort(vector<int>& v, function<bool(int, int)> callable)
 {
-	for (int i = 0; i < v.size() - 1; ++i)
-	{
-		int minIndex = i;
+	int n = static_cast<int>(v.size());
 
-		for (int j = i + 1; j < v.size(); ++j)
+	for (int i = 0; i < n - 1; ++i)
+	{
+		int cur = i;
+
+		for (int j = i + 1; j < n; ++j)
 		{
-			if (v[j] < v[minIndex])
+			if (callable(v[j], v[cur]))
 			{
-				minIndex = j;
+				cur = j;
 			}
 		}
 
-		swap(v[i], v[minIndex]);
+		swap(v[i], v[cur]);
 	}
 }
