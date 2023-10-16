@@ -5,8 +5,8 @@
 using namespace std;
 
 void PrintArray(const string& tag, const vector<int>& v);
-void RadixSort(vector<int>& v);
-int GetRadix(int n);
+void RadixSort(vector<int>& v, bool isAscending = true);
+int GetMSD(int num);
 
 int main()
 {
@@ -15,7 +15,7 @@ int main()
 	cout << "[기수 정렬]" << endl << endl;
 
 	PrintArray("▶ 정렬 전", v);
-	RadixSort(v);
+	RadixSort(v); // RadixSort(v, false);
 	PrintArray("▶ 정렬 후", v);
 }
 
@@ -25,17 +25,17 @@ void PrintArray(const string& tag, const vector<int>& v)
 
 	for (int i = 0; i < v.size(); ++i)
 	{
-		cout << v[i] << " ";
+		cout << v[i] << ' ';
 	}
 
 	cout << endl << endl;
 }
 
-void RadixSort(vector<int>& v)
+void RadixSort(vector<int>& v, bool isAscending)
 {
 	int maxValue = 0;
 
-	// 가장 큰 값을 구한다.
+	// 최댓값을 구한다.
 	for (int i = 0; i < v.size(); ++i)
 	{
 		if (v[i] > maxValue)
@@ -44,26 +44,40 @@ void RadixSort(vector<int>& v)
 		}
 	}
 
-	// 가장 큰 값의 자리수를 구한다.
-	int radix = GetRadix(maxValue);
+	// 최댓값의 자리수를 구한다.
+	int msd = GetMSD(maxValue);
 
 	// 각 자리수(0 ~ 9)를 저장하기 위한 버킷
-	queue<int> q[10];
+	queue<int> bucket[10];
 	int digit = 1;
 
-	for (int i = 0; i < radix; ++i)
+	for (int i = 0; i < msd; ++i)
 	{
 		for (int j = 0; j < v.size(); ++j)
 		{
-			q[(v[j] / digit) % 10].push(v[j]);
+			bucket[(v[j] / digit) % 10].push(v[j]);
 		}
 
-		for (int k = 0, l = 0; k < 10; ++k)
+		if (isAscending)
 		{
-			while (!q[k].empty())
+			for (int k = 0, l = 0; k < 10; ++k)
 			{
-				v[l++] = q[k].front();
-				q[k].pop();
+				while (!bucket[k].empty())
+				{
+					v[l++] = bucket[k].front();
+					bucket[k].pop();
+				}
+			}
+		}
+		else
+		{
+			for (int k = 9, l = 0; k >= 0; --k)
+			{
+				while (!bucket[k].empty())
+				{
+					v[l++] = bucket[k].front();
+					bucket[k].pop();
+				}
 			}
 		}
 
@@ -71,15 +85,15 @@ void RadixSort(vector<int>& v)
 	}
 }
 
-int GetRadix(int n)
+int GetMSD(int num)
 {
-	int radix = 0;
+	int digit = 0;
 
-	while (n > 0)
+	while (num > 0)
 	{
-		++radix;
-		n /= 10;
+		++digit;
+		num /= 10;
 	}
 
-	return radix;
+	return digit;
 }
