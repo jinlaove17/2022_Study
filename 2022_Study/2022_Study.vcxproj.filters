@@ -63,5 +63,8 @@
     <ClCompile Include="Floyd.cpp">
       <Filter>소스 파일\Graph</Filter>
     </ClCompile>
+    <ClCompile Include="CountingSort.cpp">
+      <Filter>소스 파일\Sort</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
